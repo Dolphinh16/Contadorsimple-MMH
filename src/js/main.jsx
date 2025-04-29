@@ -1,18 +1,32 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 
-//Bootstrap
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap"
 
-// index.css'
-import '../styles/index.css'
+import "../styles/index.css";
+import MyCounter from './components/MyCounter';
 
 // components
-import Home from './components/Home';
+const root = ReactDOM.createRoot(document.getElementById('root'));
+let contador = 0;
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <Home/>
-  </React.StrictMode>,
-)
+setInterval(  () => {
+  const cuatro = Math.floor(contador/10000);
+  const tres = Math.floor(contador/1000);
+  const dos =  Math.floor(contador/100);
+  const uno = Math.floor(contador/10);
+  console.log(cuatro, tres, dos, uno);
+
+  contador++;
+  
+root.render(
+
+  <MyCounter
+  numeroUno = {uno} 
+  numeroDos = {dos}
+  numeroTres = {tres}
+  numeroCuatro = {cuatro}
+  />
+
+)},100);
+
+
